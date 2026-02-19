@@ -186,7 +186,7 @@ export const deleteProfile = async (req, res) => {
     const cognitoResult = await deleteCognitoUser(profileEmail);
 
     if (!cognitoResult.success) {
-      console.log(`⚠️ Cognito deletion issue: ${cognitoResult.error}`);
+      console.log(`Cognito deletion issue: ${cognitoResult.error}`);
     }
 
     console.log(`Deleting profile for ${profileEmail} from MongoDB...`);

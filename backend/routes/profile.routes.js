@@ -12,7 +12,8 @@ const router = express.Router();
 router.post("/upsert", createOrUpdateProfile);
 
 router.get("/profile", getProfile);
-router.put("/profile/nutrition-goals", updateNutritionGoals);
-router.put("/profile/avatar", uploadAvatar);
-router.delete("/profile/delete-profile", deleteProfile);
+router.put("/nutrition-goals", updateNutritionGoals);
+router.put("/avatar", uploadAvatar);
+router.delete("/delete-profile", deleteProfile);
+
 export default router;

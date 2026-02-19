@@ -103,6 +103,15 @@ const userProfileSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  expoPushToken: {
+    type: String,
+    default: null,
+  },
+
+  pushEnabled: {
+    type: Boolean,
+    default: true,
+  },
 
   createdAt: {
     type: Date,
