@@ -2,19 +2,18 @@ import { sendPushToAllUsers } from "../services/push.service.js";
 import UserProfile from "../models/user.model.js";
 export const savePushToken = async (req, res) => {
   try {
-    const { userId } = req.user;
-    const { expoPushToken } = req.body;
+    const { userId, expoPushToken } = req.body;
 
-    if (!expoPushToken) {
+    if (!userId || !expoPushToken) {
       return res.status(400).json({
         success: false,
-        error: "Expo push token is required",
+        error: "userId and expoPushToken required",
       });
     }
 
     const userProfile = await UserProfile.findOneAndUpdate(
       { userId },
-      { expoPushToken },
+      { $set: { expoPushToken } },
       { new: true },
     );
 
@@ -30,7 +29,6 @@ export const savePushToken = async (req, res) => {
       message: "Push token saved successfully",
     });
   } catch (error) {
-    console.error("Save push token error:", error);
     res.status(500).json({
       success: false,
       error: error.message,
